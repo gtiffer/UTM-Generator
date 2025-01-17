@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM URL Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Tooltip library -->
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+</head>
+<body>
+    <h1>UTM URL Generator</h1>
+    <p class="description">Track your marketing campaigns by creating custom URLs with UTM parameters. Perfect for measuring traffic sources and campaign performance across different platforms.</p>
+    <div class="container">
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="rootUrl">Root URL</label>
+                <i class="ph ph-question help-icon" data-tippy-content="The base URL of your website or landing page"></i>
+            </div>
+            <div class="input-wrapper">
+                <input type="url" id="rootUrl" placeholder="https://example.com/page" required>
+                <button class="clear-input" onclick="clearField('rootUrl')" aria-label="Clear input">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="utmSource">UTM Source</label>
+                <i class="ph ph-question help-icon" data-tippy-content="The platform or source where your link will be shared"></i>
+            </div>
+            <div class="select-wrapper">
+                <select id="utmSource" onchange="handleSourceChange()" required>
+                    <option value="">Select a platform</option>
+                    <option value="facebook" data-icon="facebook-logo">Facebook</option>
+                    <option value="instagram" data-icon="instagram-logo">Instagram</option>
+                    <option value="twitter" data-icon="twitter-logo">Twitter</option>
+                    <option value="youtube" data-icon="youtube-logo">YouTube</option>
+                    <option value="ytcommunity" data-icon="youtube-logo">YTCommunity</option>
+                    <option value="x" data-icon="twitter-logo">X</option>
+                    <option value="tiktok" data-icon="tiktok-logo">TikTok</option>
+                    <option value="linkedin" data-icon="linkedin-logo">LinkedIn</option>
+                    <option value="other" data-icon="plus">Other - type your own</option>
+                </select>
+            </div>
+            <div class="input-wrapper" id="utmSourceCustomWrapper" style="display: none; margin-top: 0.5rem;">
+                <input type="text" id="utmSourceCustom" placeholder="Enter custom source">
+                <button class="clear-input" onclick="clearField('utmSourceCustom')" aria-label="Clear input">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="utmCampaign">UTM Campaign</label>
+                <i class="ph ph-question help-icon" data-tippy-content="The name of your marketing campaign"></i>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="utmCampaign" placeholder="summer" required>
+                <button class="clear-input" onclick="clearField('utmCampaign')" aria-label="Clear input">
+                    <i class="ph ph-x"></i>
+                </button>
+                <div class="char-count" id="campaignCharCount">0/100</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button onclick="generateUrl()" id="generateButton">
+                <span>Generate URL</span>
+                <div class="loader"></div>
+            </button>
+            <button onclick="resetFields()" class="reset-btn">Reset All</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        <p>Made with <i class="ph ph-robot"></i> + <i class="ph ph-heart"></i> in MN <i class="ph ph-map-pin"></i></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
