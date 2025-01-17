@@ -2,7 +2,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all tooltips
     tippy('.help-icon', {
-        placement: 'top'
+        placement: 'right-start',
+        offset: [0, 0],
+        animation: 'shift-away',
+        arrow: true,
+        theme: 'custom',
+        duration: [200, 150],
+        interactive: true
     });
 
     // Add character counter for campaign name

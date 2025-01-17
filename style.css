@@ -282,13 +282,21 @@ button.loading span {
     color: var(--text-secondary);
     font-size: 0.875rem;
     cursor: help;
-    transition: color var(--animation-timing);
     display: inline-flex;
     align-items: center;
 }
 
-.help-icon:hover {
-    color: var(--primary);
+/* Override Tippy.js default styles */
+.tippy-box {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.875rem;
+    padding: 0.5rem;
+}
+
+.tippy-arrow {
+    color: var(--card);
 }
 
 .description {
